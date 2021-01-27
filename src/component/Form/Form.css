@@ -1,0 +1,6 @@
+.form_wrapper{
+    display: flex;
+}
+.form_wrapper button {
+    margin-left: 10px;
+}

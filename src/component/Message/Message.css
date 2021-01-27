@@ -1,0 +1,12 @@
+.mr-auto{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.toast.show {
+    width: 315px;
+}
+.text_wrapper{
+word-wrap: break-word;
+}
