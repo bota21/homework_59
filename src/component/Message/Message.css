@@ -10,3 +10,10 @@
 .text_wrapper{
 word-wrap: break-word;
 }
+.rounded .toast-header{
+    background-color: #91c0f1;
+}
+.title{
+    font-size: 16px;
+    text-transform: capitalize;
+}

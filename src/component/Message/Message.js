@@ -3,19 +3,24 @@ import { React } from 'react';
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 
 const Message = props => {
-    return <div>
-      <div className="p-3 my-2 rounded">
-        <Toast>
-          <ToastHeader>
-              <h5>{props.author}</h5>
-              <h5>{props.date}</h5> 
-          </ToastHeader>
-          <ToastBody className='text_wrapper'> 
-            {props.message}
-          </ToastBody>
-        </Toast>
-      </div> 
-    </div>
-};
-
-export default Message
+    let printMessages = props.array.map(data => {
+        return (
+            <div className="my-2 rounded" key={data._id}>
+            <Toast>
+            <ToastHeader>
+            <h5 className='title'>{data.author}</h5>
+            <h5 className='title'>{data.datetime}</h5> 
+            </ToastHeader>
+            <ToastBody className='text_wrapper'> 
+            {data.message}
+            </ToastBody>
+            </Toast>
+            </div> 
+            )
+        })
+        return <div>
+        {printMessages}
+        </div>
+    };
+    
+    export default Message
