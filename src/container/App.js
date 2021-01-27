@@ -19,9 +19,16 @@ function App() {
     }   
   }, [messages])
 
+  let createNewMessage = (e, data) => {
+    e.preventDefault();
+    axios.post(urlForSend, {
+      author: data.author,
+      message: data.message
+    }).then(function(res) {console.log(res)})
+  }
   return (
     <div className="App">      
-    <ChatForm />
+    <ChatForm submit={e=>createNewMessage(e)} />
     <Message array={messages} /> 
     </div>
     );
