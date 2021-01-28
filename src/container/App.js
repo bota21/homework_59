@@ -5,12 +5,12 @@ import Message from '../component/Message/Message';
 import ChatForm from '../component/ChatForm/ChatForm';
 
 function App() {
-  let urlForSend = 'http://146.185.154.90:8000/messages';
+  let url = 'http://146.185.154.90:8000/messages';
   const [messages, setMessages] = useState([]);
   
   useEffect(async() => {
     try{
-      let getUrl = axios.get(urlForSend);
+      let getUrl = axios.get(url);
       await getUrl.then(res => {
         setMessages(res.data)
       })
@@ -19,16 +19,23 @@ function App() {
     }   
   }, [messages])
 
-  let createNewMessage = (e, data) => {
+  let submitMessage = (async(e, data) => {  
     e.preventDefault();
-    axios.post(urlForSend, {
-      author: data.author,
-      message: data.message
-    }).then(function(res) {console.log(res)})
-  }
+    const newValue = new URLSearchParams();
+    newValue.set('author', data.author);
+    newValue.set('message', data.message);
+    await axios({
+      method: 'post',
+      url: url,
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: newValue
+    })
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
+  });
   return (
     <div className="App">      
-    <ChatForm submit={e=>createNewMessage(e)} />
+    <ChatForm submit={submitMessage}  />
     <Message array={messages} /> 
     </div>
     );

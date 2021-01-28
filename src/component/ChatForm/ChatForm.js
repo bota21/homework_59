@@ -11,7 +11,7 @@ const ChatForm = props => {
     setFormFields({...formFields, [e.target.name]: e.target.value})
   }
   return (
-  <Form onSubmit={e => props.submit(e, ...formFields)}>
+  <Form onSubmit={e => props.submit(e, formFields)}>
   <FormGroup className='form_wrapper'>
   <Input type="text" placeholder="Enter author"
   name='author' onChange={inputHandler} value={formFields.author}/>
