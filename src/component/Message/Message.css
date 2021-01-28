@@ -13,7 +13,10 @@ word-wrap: break-word;
 .rounded .toast-header{
     background-color: #91c0f1;
 }
-.title{
+.title, .title_date{
     font-size: 16px;
     text-transform: capitalize;
+}
+.title_date{
+    width: 100px;
 }
